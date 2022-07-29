@@ -1,4 +1,5 @@
 import {DeleteTodo} from "./DeleteTodo"
+import {CheckTodo} from "./CheckTodo"
 // Create the type Todo 
 type Todo = {
     id: string
@@ -19,39 +20,41 @@ export const Card = ({
     todo: {task, isCompleted, id },
     handleDeleteTodo, 
     handleCheckTodo,
-}: TodoProps) => (
-
-    <div className={`
-        flex w-full p-4 mb-2 justify-between items-center rounded-3xl shadow
-        ${isCompleted ? "bg-purple-800" : "bg-purple-600"}  `}
-    >
-
-        <div className="w-40">
-            <p id="todoTitle"
-                className={`
-                    ml-2 text-xl font-sans font-medium
-                    ${isCompleted ? "text-white line-through" : "text-white"}
-                `}
-            >{task}
-            </p>
-        </div>
-        
-
-        <div id="selection"
-            className="w-1/6 flex space-x-1 items-center"
+}: TodoProps) => {
+    return (
+        <div className={`
+            flex w-full p-4 mb-2 justify-between items-center rounded-3xl shadow
+            ${isCompleted ? "bg-purple-800" : "bg-purple-600"}  `}
         >
+
+            <div className="w-40">
+                <p id="todoTitle"
+                    className={`
+                        ml-2 text-xl font-sans font-medium
+                        ${isCompleted ? "text-white line-through" : "text-white"}
+                    `}
+                >{task}
+                </p>
+            </div>
             
 
-            <input id="checkbox"
-                type="checkbox" 
-                checked={isCompleted} 
-                className="w-8 h-8 rounded-3xl"
-                onChange={() => handleCheckTodo(id)} 
-            />
+            <div id="selection"
+                className="w-1/6 flex space-x-1 items-center"
+            >
+                
 
-            <DeleteTodo 
-            id={id}
-            handleDeleteTodo={() => handleDeleteTodo(id)} />
+                <CheckTodo
+                id={id}
+                isCompleted={isCompleted}
+                handleCheckTodo={() => handleCheckTodo(id)}
+
+                />
+
+                <DeleteTodo 
+                id={id}
+                handleDeleteTodo={() => handleDeleteTodo(id)} />
+            </div>
         </div>
-    </div>
-)
+    )
+}
+
