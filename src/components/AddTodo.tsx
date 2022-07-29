@@ -2,7 +2,7 @@ import { ReactComponent as PlusIcon } from '../assets/plus.svg'
 import { ChangeEvent, FormEvent }  from 'react'
 
 // Export to get give task in Todo component
-type AddTodoProps = {
+interface AddTodoProps {
     task: string; // Task title
     handleSubmitTodo: (e: FormEvent) => void; // Function add task, return the new todo
     handleChange: (e: ChangeEvent) => void; // Function get changes on the input, set task title

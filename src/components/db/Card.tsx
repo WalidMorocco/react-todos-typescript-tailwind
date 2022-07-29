@@ -1,34 +1,29 @@
-import {DeleteTodo} from "./DeleteTodo"
-import {CheckTodo} from "./CheckTodo"
-import { Todo } from "../types/Todo";
+import {DeleteTodo} from "../DeleteTodo"
+import {CheckTodo} from "../CheckTodo"
+import { Todo } from "../../types/Todo";
 
-// Create TodoProp to use props with our Todo type
+// Create the type Todo 
 interface TodoProps {
-    // todo property type Todo
-    todo: Todo
+    todo: Todo;
     handleDeleteTodo: (id: string) => void
     handleCheckTodo: (id: string) => void
 }
 
 // Create the Row component
-export const Card = ({
-    todo: {task, isCompleted, id },
-    handleDeleteTodo, 
-    handleCheckTodo,
-}: TodoProps) => {
+export const Card = ({todo, handleDeleteTodo, handleCheckTodo}: TodoProps) => {
     return (
         <div className={`
             flex w-full p-4 mb-2 justify-between items-center rounded-3xl shadow
-            ${isCompleted ? "bg-purple-800" : "bg-purple-600"}  `}
+            ${todo.isCompleted ? "bg-purple-800" : "bg-purple-600"}  `}
         >
 
             <div className="w-40">
                 <p id="todoTitle"
                     className={`
                         ml-2 text-xl font-sans font-medium
-                        ${isCompleted ? "text-white line-through" : "text-white"}
+                        ${todo.isCompleted ? "text-white line-through" : "text-white"}
                     `}
-                >{task}
+                >{todo.task}
                 </p>
             </div>
             
@@ -39,15 +34,15 @@ export const Card = ({
                 
 
                 <CheckTodo
-                id={id}
-                isCompleted={isCompleted}
-                handleCheckTodo={() => handleCheckTodo(id)}
+                id={todo.id}
+                isCompleted={todo.isCompleted}
+                handleCheckTodo={() => handleCheckTodo(todo.id)}
 
                 />
 
                 <DeleteTodo 
-                id={id}
-                handleDeleteTodo={() => handleDeleteTodo(id)} />
+                id={todo.id}
+                handleDeleteTodo={() => handleDeleteTodo(todo.id)} />
             </div>
         </div>
     )

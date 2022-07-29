@@ -1,9 +1,10 @@
 import { Todos } from "./components/Todos"
+import { Layout } from './components/Layout';
 
 function App() {
   return (
     <div className="bg-gray-800 flex h-screen items-center justify-center">
-      <Todos />
+      <Layout />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react"
-import {Card} from "./Card"
+import {Card} from "./db/Card"
 import { data } from "../todos"
 import { AddTodo } from "./AddTodo";
 import { v4 as uuidv4 } from "uuid"
